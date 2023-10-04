@@ -1,3 +1,22 @@
+/**
+ * Ques 1- Implement bubble sort in javascript.
+ * Write a function to Sort the given array nums in ascending order. 
+ * 
+ * [9, 5, 6, 1, 0]
+ *  ⬆  ⬆
+ * compare two elements in a loop at a time if finds greater then swap the elements.
+ * [5, 9, 6, 1, 0]
+ *     ⬆  ⬆
+ * [5, 6, 9, 1, 0]
+ *        ⬆  ⬆
+ * [5, 9, 1, 9, 0]
+ *           ⬆  ⬆
+ * [5, 6, 1, 0, 9]
+ *  ⬆  ⬆
+ * 
+ * comparison will continue and swap will be performed if element find greater until the lenght of input array. 
+ */
+
 // Input
 const input1 = [8, 9, 5, 6458, 100, 12, 1];
 const input2 = [9, 5, 6, 1, 0];
