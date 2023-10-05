@@ -42,3 +42,12 @@ const bubbleSort = (arr) => {
 }
 
 console.log(bubbleSort(input2));
+
+// Time Complexity
+// Best Case = O(n); Here array could be already sorted i.e, Already in ascending order.
+// Wort Case = O(n^2); Here array could be not a single element is sorted i.e, Array is in descending order.
+// Average Case = O(n^2)
+
+// Space Complexity
+// We're just taking 1 array and not creating any other array so the space complexity will be -
+// O(1); 
