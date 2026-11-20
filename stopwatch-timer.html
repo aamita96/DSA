@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+</head>
+
+<body>
+    <div id="stopwatch">0:00</div>
+
+    <button type="button" id="start">Start</button>
+    <button type="button" id="pause">Pause</button>
+    <button type="button" id="reset">Reset</button>
+</body>
+<script>
+    // start , pause and continue and  reset
+    const stopwatch = document.getElementById('stopwatch');
+    const startBtn = document.getElementById('start');
+    const pauseBtn = document.getElementById('pause');
+    const resetBtn = document.getElementById('reset');
+
+    pauseBtn.disabled = true;
+
+    let interval;
+    let hour = 0;
+    let min = 0;
+    let second = 0;
+
+    stopwatch.innerText = formatTime(hour, min, second);
+
+    startBtn.addEventListener('click', startTimer);
+    resetBtn.addEventListener('click', resetTimer);
+    pauseBtn.addEventListener('click', pauseTimer);
+
+
+    function startTimer() {
+        if (!interval) {
+            startBtn.disabled = true;
+            pauseBtn.disabled = false;
+            interval = setInterval(() => {
+                second++;
+
+                if (second === 60) {
+                    second = 0;
+                    min++;
+                }
+                if (min === 60) {
+                    hour++;
+                    min = 0;
+                }
+
+                stopwatch.innerText = formatTime(hour, min, second);
+            }, 1000);
+        }
+    }
+
+    function pauseTimer() {
+        if (pauseBtn.innerText === 'Pause') {
+            clearInterval(interval);
+            interval = null;
+            pauseBtn.innerText = 'Continue';
+        } else {
+            startTimer();
+            pauseBtn.innerText = 'Pause';
+        }
+    }
+
+    function resetTimer() {
+        clearInterval(interval);
+        interval = null;
+        startBtn.disabled = false;
+        pauseBtn.disabled = true;
+        hour = min = second = 0;
+        stopwatch.innerText = formatTime(hour, min, second);
+    }
+
+    function formatTime(hour, min, sec) {
+        hour = hour.toString().padStart(2, 0);
+        min = min.toString().padStart(2, 0);
+        sec = sec.toString().padStart(2, 0);
+
+        return `${hour}:${min}:${sec}`;
+    }
+
+</script>
+</html>
